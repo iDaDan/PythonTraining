@@ -12,14 +12,19 @@ class test_name_group(unittest.TestCase):
     
     def test_add_group(self):
         wd = self.wd
+        # open home page
         wd.get("http://localhost/addressbook/")
+        # login
         wd.find_element("name", "user").clear()
         wd.find_element("name", "user").send_keys("admin")
         wd.find_element("name", "pass").clear()
         wd.find_element("name", "pass").send_keys("secret")
         wd.find_element("xpath", "//input[@value='Login']").click()
+        # open groups page
         wd.find_element("link text", "groups").click()
+        # init group creation
         wd.find_element("name", "new").click()
+        # fill group firm
         wd.find_element("name", "group_name").click()
         wd.find_element("name", "group_name").clear()
         wd.find_element("name", "group_name").send_keys("Test")
@@ -27,7 +32,9 @@ class test_name_group(unittest.TestCase):
         wd.find_element("name", "group_header").send_keys("Test1")
         wd.find_element("name", "group_footer").clear()
         wd.find_element("name", "group_footer").send_keys("Test2")
+        # submit group creation
         wd.find_element("name", "submit").click()
+        # logout
         wd.find_element("link text", "group page").click()
         wd.find_element("link text", "Logout").click()
     
