@@ -34,8 +34,8 @@ class test_name_user(unittest.TestCase):
         self.create_user(wd, User(firstname = "", middlename = "", lastname = "", nickname = "",
                                   title = "", company = "", address = "", home = "",
                                   mobile = "", work = "", fax = "", email = "",
-                                  homepage = "", bday = "", bmonth = "", byear = "",
-                                  aday = "", amonth = "", ayear = ""))
+                                  homepage = "", bday = "5", bmonth = "October", byear = "1000",
+                                  aday = "6", amonth = "November", ayear = "1001"))
         self.return_home_page(wd)
         self.logout(wd)
 
