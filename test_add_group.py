@@ -3,6 +3,7 @@ from selenium import webdriver
 from selenium.common.exceptions import NoSuchElementException
 from selenium.common.exceptions import NoAlertPresentException
 from group import Group
+from login import Login
 import unittest
 
 class test_name_group(unittest.TestCase):
@@ -14,7 +15,7 @@ class test_name_group(unittest.TestCase):
     def test_add_group(self):
         wd = self.wd
         self.open_home_page(wd)
-        self.login(wd, username="admin", password="secret")
+        self.login(wd, Login(username="admin", password="secret"))
         self.open_group_page(wd)
         self.create_group(wd, Group(name="Test", header="Test1", footer="Test2"))
         self.return_group_page(wd)
@@ -23,7 +24,7 @@ class test_name_group(unittest.TestCase):
     def test_add_empty_group(self):
         wd = self.wd
         self.open_home_page(wd)
-        self.login(wd, username="admin", password="secret")
+        self.login(wd, Login(username="admin", password="secret"))
         self.open_group_page(wd)
         self.create_group(wd, Group(name="", header="", footer=""))
         self.return_group_page(wd)

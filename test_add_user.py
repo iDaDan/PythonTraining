@@ -3,6 +3,7 @@ from selenium import webdriver
 from selenium.webdriver.support.ui import Select
 from selenium.common.exceptions import NoSuchElementException
 from selenium.common.exceptions import NoAlertPresentException
+from login import Login
 import unittest
 
 
@@ -15,12 +16,7 @@ class test_name_user(unittest.TestCase):
     def test_add_user(self):
         wd = self.wd
         wd.get("http://localhost/addressbook/")
-        wd.find_element("name","user").click()
-        wd.find_element("name","user").clear()
-        wd.find_element("name","user").send_keys("admin")
-        wd.find_element("name","pass").clear()
-        wd.find_element("name","pass").send_keys("secret")
-        wd.find_element("xpath","//input[@value='Login']").click()
+        self.login(wd, Login(username="admin", password="secret"))
         #add to separate method/class
         wd.find_element("link text","add new").click()
         wd.find_element("name","firstname").click()
@@ -80,6 +76,18 @@ class test_name_user(unittest.TestCase):
         wd.find_element("name","ayear").send_keys("1001")
         wd.find_element("xpath","//div[@id='content']/form/input[20]").click()
         wd.find_element("link text","home").click()
+        self.logout(wd)
+
+    def login(self, wd, username, password):
+        wd.find_element("name", "user").click()
+        wd.find_element("name", "user").clear()
+        wd.find_element("name", "user").send_keys(username)
+        wd.find_element("name", "pass").clear()
+        wd.find_element("name", "pass").send_keys(password)
+        wd.find_element("xpath", "//input[@value='Login']").click()
+
+    def logout(self, wd):
+        wd.find_element("link text", "Logout").click()
 
     def is_element_present(self, how, what):
         try:
