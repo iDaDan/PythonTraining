@@ -17,16 +17,20 @@ class test_name_user(unittest.TestCase):
         self.open_home_page(wd)
         self.make_login(wd, Login(username="admin", password="secret"))
         # add to separate method/class
-        self.create_user(wd)
+        self.create_user(self, wd, self.fill_element_by_name)
         wd.find_element("link text", "home").click()
         self.logout(wd)
-
-    #def fill_element_by_name(self, text):
-     #   self.text = text
-
-
+''' will be debugged later
+    def fill_element_by_name(self, wd, indicator, text):
+        self.text = text
+        self.indicator = indicator
+        wd.find_element("name", indicator).click()
+        wd.find_element("name", indicator).clear()
+        wd.find_element("name", indicator).send_keys(text)
+'''
     def create_user(self, wd):
         wd.find_element("link text", "add new").click()
+        #fill_element_by_name(self, wd, "firstname", "Thor")
         wd.find_element("name", "firstname").click()
         wd.find_element("name", "firstname").clear()
         wd.find_element("name", "firstname").send_keys("Tor")
