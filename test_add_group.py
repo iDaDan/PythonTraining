@@ -15,7 +15,7 @@ class test_name_group(unittest.TestCase):
     def test_add_group(self):
         wd = self.wd
         self.open_home_page(wd)
-        self.login(wd, Login(username="admin", password="secret"))
+        self.make_login(wd, Login(username="admin", password="secret"))
         self.open_group_page(wd)
         self.create_group(wd, Group(name="Test", header="Test1", footer="Test2"))
         self.return_group_page(wd)
@@ -24,7 +24,7 @@ class test_name_group(unittest.TestCase):
     def test_add_empty_group(self):
         wd = self.wd
         self.open_home_page(wd)
-        self.login(wd, Login(username="admin", password="secret"))
+        self.make_login(wd, Login(username="admin", password="secret"))
         self.open_group_page(wd)
         self.create_group(wd, Group(name="", header="", footer=""))
         self.return_group_page(wd)
@@ -54,11 +54,11 @@ class test_name_group(unittest.TestCase):
         # open groups page
         wd.find_element("link text", "groups").click()
 
-    def login(self, wd, username, password):
+    def make_login(self, wd, login):
         wd.find_element("name", "user").clear()
-        wd.find_element("name", "user").send_keys(username)
+        wd.find_element("name", "user").send_keys(login.username)
         wd.find_element("name", "pass").clear()
-        wd.find_element("name", "pass").send_keys(password)
+        wd.find_element("name", "pass").send_keys(login.password)
         wd.find_element("xpath", "//input[@value='Login']").click()
 
     def open_home_page(self, wd):
