@@ -1,13 +1,13 @@
 # -*- coding: utf-8 -*-
 from login import Login
 from user import User
-from app_user_fixture import UserApp
+from application_fixture import Application
 import pytest
 
 
 @pytest.fixture()
 def app(request):
-    fixture = UserApp()
+    fixture = Application()
     request.addfinalizer(fixture.destroy)
     return fixture
 
