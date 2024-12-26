@@ -29,7 +29,6 @@ class GroupHelper:
 
     def delete_first_group(self):
         wd = self.app.wd
-        self.open_group_page()
         #select_first_group
         wd.find_element("name", "selected[]").click()
         #sibmit deletion

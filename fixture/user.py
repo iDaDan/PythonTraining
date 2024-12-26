@@ -61,3 +61,8 @@ class UserHelper:
         wd.find_element("name", "ayear").clear()
         wd.find_element("name", "ayear").send_keys(user.ayear)
         wd.find_element("xpath", "//div[@id='content']/form/input[20]").click()
+
+    def delete_user(self):
+        wd = self.app.wd
+        wd.find_element("name", "selected[]").click()
+        wd.find_element("value", "Delete").click()

@@ -1,7 +1,6 @@
 # -*- coding: utf-8 -*-
 from model.group import Group
 from login import Login
-import pytest
 
 
 def test_add_group(app):
