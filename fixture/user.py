@@ -65,4 +65,4 @@ class UserHelper:
     def delete_user(self):
         wd = self.app.wd
         wd.find_element("name", "selected[]").click()
-        wd.find_element("value", "Delete").click()
+        wd.find_element("xpath", '//*[@id="content"]/form[2]/div[2]/input').click()
