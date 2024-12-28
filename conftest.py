@@ -7,3 +7,5 @@ def app(request):
     fixture = Application()
     request.addfinalizer(fixture.destroy)
     return fixture
+
+# для создания, удаления и модификации групп и контактов
