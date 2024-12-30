@@ -3,6 +3,7 @@ from login import Login
 
 def test_add_user(app):
     app.session.make_login(Login(username="admin", password="secret"))
+    app.open_home_page()
     # add to separate method/class
     app.user.modify_user(User(firstname="XThor", middlename="XIvanov", lastname="XOdinovich", nickname="XGodOfThunder",
                               title="XWhat is Title", company="XAsgard", address="XStill Asgard", home="XBifrust",
